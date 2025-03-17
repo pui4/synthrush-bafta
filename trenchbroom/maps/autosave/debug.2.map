@@ -1,9 +1,0 @@
-// Game: mv-game
-// Format: Valve
-// entity 0
-{
-"mapversion" "220"
-"wad" ""
-"classname" "worldspawn"
-"_tb_mod" "textures"
-}

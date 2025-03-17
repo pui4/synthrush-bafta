@@ -14,6 +14,7 @@ func _process(_delta: float) -> void:
     anim.speed_scale = anim_speed
 
     if Input.is_action_just_pressed("shoot") and can_shoot and not Lib.soft_pause:
+        print(Lib.player_raycast.get_collider())
         if anim.is_playing():
             anim_speed *= 1.5
         anim.play("shoot")

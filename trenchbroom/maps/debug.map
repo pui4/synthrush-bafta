@@ -210,6 +210,14 @@
 ( 1040 640 192 ) ( 1041 640 192 ) ( 1040 640 193 ) __TB_empty [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
 ( 1040 640 192 ) ( 1040 640 193 ) ( 1040 641 192 ) __TB_empty [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
 }
+// brush 21
+{
+( 1408 -240 32 ) ( 1408 -239 32 ) ( 1408 -240 33 ) prototype/texture_01 [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 1408 -240 32 ) ( 1408 -240 33 ) ( 1409 -240 32 ) prototype/texture_01 [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( 1408 -240 32 ) ( 1409 -240 32 ) ( 1408 -239 32 ) prototype/texture_01 [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( 1664 -240 192 ) ( 1408 -240 192 ) ( 1408 192 32 ) prototype/texture_01 [ 1 0 0 0 ] [ 0 -0.9377487607237037 0.347314355823594 0 ] 0 1 1
+( 1664 192 48 ) ( 1664 192 49 ) ( 1664 193 48 ) prototype/texture_01 [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
 }
 // entity 1
 {
@@ -303,4 +311,54 @@
 "classname" "cyber_upgrade_station"
 "origin" "856 632 40"
 "angle" "90"
+}
+// entity 12
+{
+"classname" "enemy_spawner"
+"origin" "-1800 -2408 568"
+"id" "1"
+"targetname" "test_spawner"
+}
+// entity 13
+{
+"classname" "trigger"
+"fireonce" "1"
+"target" "test_spawner"
+// brush 0
+{
+( -1856 -2656 560 ) ( -1856 -2655 560 ) ( -1856 -2656 561 ) __TB_empty [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1856 -2656 560 ) ( -1856 -2656 561 ) ( -1855 -2656 560 ) __TB_empty [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1856 -2656 560 ) ( -1855 -2656 560 ) ( -1856 -2655 560 ) __TB_empty [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1600 -2640 784 ) ( -1600 -2639 784 ) ( -1599 -2640 784 ) __TB_empty [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
+( -1600 -2640 576 ) ( -1599 -2640 576 ) ( -1600 -2640 577 ) __TB_empty [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
+( -1600 -2640 576 ) ( -1600 -2640 577 ) ( -1600 -2639 576 ) __TB_empty [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
+}
+}
+// entity 14
+{
+"classname" "enemy_spawner"
+"origin" "-1688 -2424 568"
+"id" "1"
+"targetname" "test_spawner"
+}
+// entity 15
+{
+"classname" "enemy_spawner"
+"origin" "-1752 -2360 568"
+"id" "1"
+"targetname" "test_spawner"
+}
+// entity 16
+{
+"classname" "enemy_spawner"
+"origin" "-1832 -2504 568"
+"id" "1"
+"targetname" "test_spawner"
+}
+// entity 17
+{
+"classname" "enemy_spawner"
+"origin" "-1688 -2488 568"
+"id" "1"
+"targetname" "test_spawner"
 }

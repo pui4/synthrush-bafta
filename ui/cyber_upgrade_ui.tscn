@@ -294,21 +294,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_v3oom")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = 18.0
-offset_right = -1.0
-offset_bottom = 18.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1, 0.41)
+[node name="Arm panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 103.0
+offset_top = 161.0
+offset_right = 339.0
+offset_bottom = 233.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Arm panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -317,18 +311,30 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer"]
+[node name="Button" type="Button" parent="Arm panel/HBoxContainer"]
 layout_mode = 2
-expand_icon = true
+icon = ExtResource("7_xs8kh")
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Button"]
+[node name="Hip panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 71.0
+offset_top = 289.0
+offset_right = 307.0
+offset_bottom = 361.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Hip panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_xs8kh")
+alignment = 1
+
+[node name="Button" type="Button" parent="Hip panel/HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("7_xs8kh")
 
 [connection signal="pressed" from="Head" to="." method="_on_head_pressed"]
 [connection signal="pressed" from="Arm" to="." method="_on_arm_pressed"]

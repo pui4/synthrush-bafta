@@ -81,6 +81,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, 0)
 cull_mask = 1047554
 
 [node name="RayCast3D" type="RayCast3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.477659)
 target_position = Vector3(0, 0, -1000)
 
 [node name="FmodListener3D" type="FmodListener3D" parent="Head"]
