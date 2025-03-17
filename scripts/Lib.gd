@@ -16,7 +16,7 @@ extends Node
 # 2: hip
 # 3: leg
 @export var unlocked_slots : Array[bool] = [
-	false, false, false, false
+	false, false, true, false
 ]
 
 @export var player : Node3D

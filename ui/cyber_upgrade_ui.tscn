@@ -61,6 +61,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_16etv")
+item_icons = {
+"arm": [],
+"hip": [ExtResource("7_xs8kh")]
+}
 panel_height = 300
 increase = 10
 
@@ -336,8 +340,27 @@ alignment = 1
 layout_mode = 2
 icon = ExtResource("7_xs8kh")
 
+[node name="Apply" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Apply Cyberware"
+event_guid = "{72d1d216-035d-4cdb-814c-e99f04da679d}"
+
+[node name="Click" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/UI Click"
+event_guid = "{9ba1ed19-6f4d-4f6a-9f9c-eafec47d1e86}"
+
+[node name="Blocker" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
 [connection signal="pressed" from="Head" to="." method="_on_head_pressed"]
 [connection signal="pressed" from="Arm" to="." method="_on_arm_pressed"]
 [connection signal="pressed" from="Hip" to="." method="_on_hip_pressed"]
 [connection signal="pressed" from="Leg" to="." method="_on_leg_pressed"]
 [connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
+[connection signal="stopped" from="Apply" to="." method="_on_apply_stopped"]
