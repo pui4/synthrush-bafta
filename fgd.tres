@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=13 format=3 uid="uid://chuubboxaqxlx"]
+
+[ext_resource type="Resource" uid="uid://crgpdahjaj" path="res://addons/func_godot/fgd/func_godot_fgd.tres" id="1_fa2eh"]
+[ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="1_v6dqf"]
+[ext_resource type="Resource" uid="uid://714twq0fg1ma" path="res://entities/point/player.tres" id="2_rb1bk"]
+[ext_resource type="Resource" uid="uid://c0flbj1hd3vj4" path="res://entities/point/test_enemy.tres" id="4_45828"]
+[ext_resource type="Resource" uid="uid://co06oms3dgmpn" path="res://entities/point/test_gun_pickup.tres" id="4_mpi8q"]
+[ext_resource type="Resource" uid="uid://bxqs20cm0aag2" path="res://entities/point/close_enemy.tres" id="5_cuulx"]
+[ext_resource type="Resource" uid="uid://buponlcio8eid" path="res://entities/point/cyber_graple_pickup.tres" id="6_snc82"]
+[ext_resource type="Resource" uid="uid://btxnnpilikhok" path="res://entities/graple_wall.tres" id="7_7mghi"]
+[ext_resource type="Resource" uid="uid://c4q7d405sglse" path="res://entities/point/env.tres" id="8_5o5a3"]
+[ext_resource type="Resource" uid="uid://dkc2naf1fm44t" path="res://entities/point/enemy_spawner.tres" id="9_vdpea"]
+[ext_resource type="Resource" uid="uid://brb2ilbygyot2" path="res://entities/trigger.tres" id="10_ejoi0"]
+[ext_resource type="Resource" uid="uid://ccpen482hrqtp" path="res://entities/point/cyber_upgrade_station.tres" id="11_7oybk"]
+
+[resource]
+script = ExtResource("1_v6dqf")
+export_file = false
+target_map_editor = 1
+fgd_name = "mv-game"
+base_fgd_files = Array[Resource]([ExtResource("1_fa2eh")])
+entity_definitions = Array[Resource]([ExtResource("2_rb1bk"), ExtResource("4_45828"), ExtResource("4_mpi8q"), ExtResource("5_cuulx"), ExtResource("6_snc82"), ExtResource("7_7mghi"), ExtResource("8_5o5a3"), ExtResource("9_vdpea"), ExtResource("10_ejoi0"), ExtResource("11_7oybk")])

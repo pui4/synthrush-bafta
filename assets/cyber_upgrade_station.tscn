@@ -1,0 +1,172 @@
+[gd_scene load_steps=12 format=3 uid="uid://coyk0plqy87kg"]
+
+[ext_resource type="Script" path="res://scripts/cyber_upgrade_station.gd" id="1_qphsl"]
+[ext_resource type="PackedScene" uid="uid://c4oiks0a6dj07" path="res://blend/cyber_store.blend" id="3_tktut"]
+[ext_resource type="ArrayMesh" uid="uid://is4pcmkdrooi" path="res://meshes/dealer_head.res" id="3_wbd4v"]
+[ext_resource type="ArrayMesh" uid="uid://b3a4fxi6vki5e" path="res://meshes/dealer_mouth.res" id="4_2hbyo"]
+[ext_resource type="ArrayMesh" uid="uid://dvamr2pwphcgx" path="res://meshes/dealer_rings.res" id="5_a65wc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ttoj"]
+size = Vector3(5.20126, 5.02832, 3.06589)
+
+[sub_resource type="Animation" id="Animation_gadwe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouth:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rings:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.90799e-14, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mouth:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.13163e-14, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7r4tn"]
+resource_name = "talk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouth:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.13163e-14, 0), Vector3(-2.09223e-08, -5.33242e-09, 0.499112), Vector3(0, 2.13163e-14, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tipkt"]
+_data = {
+"RESET": SubResource("Animation_gadwe"),
+"talk": SubResource("Animation_7r4tn")
+}
+
+[sub_resource type="Animation" id="Animation_l11oe"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.0208983, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouth:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.0208983, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rings:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.90799e-14, 0), Vector3(0, 3.14159, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i7jn6"]
+_data = {
+"idle": SubResource("Animation_l11oe")
+}
+
+[node name="cyber_upgrade_station" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0, 0)
+script = ExtResource("1_qphsl")
+max_interact_dist = 10.0
+max_look_dist = 10.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0141758, 2.21436, -0.0105441)
+shape = SubResource("BoxShape3D_3ttoj")
+
+[node name="cyber_store" parent="." instance=ExtResource("3_tktut")]
+transform = Transform3D(-6.22887e-08, 0, 1.425, 0, 1.612, 0, -1.425, 0, -6.22887e-08, -0.00267279, 2.24608, -0.00264955)
+
+[node name="dealer" type="Node3D" parent="."]
+transform = Transform3D(-3.21279e-08, 0, 0.735, 0, 0.735, 0, -0.735, 0, -3.21279e-08, 0, 3.1941, 0)
+
+[node name="Head" type="MeshInstance3D" parent="dealer"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
+mesh = ExtResource("3_wbd4v")
+
+[node name="Mouth" type="MeshInstance3D" parent="dealer"]
+transform = Transform3D(1, 0, 2.13163e-14, 0, 1, 0, -2.13163e-14, 0, 1, 0, 0, 0)
+mesh = ExtResource("4_2hbyo")
+
+[node name="Rings" type="MeshInstance3D" parent="dealer"]
+transform = Transform3D(1, 0, 3.90799e-14, 0, 1, 0, -3.90799e-14, 0, 1, 0.117703, -0.586772, 5.14496e-09)
+mesh = ExtResource("5_a65wc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="dealer"]
+libraries = {
+"": SubResource("AnimationLibrary_tipkt")
+}
+autoplay = "idle"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="dealer"]
+libraries = {
+"": SubResource("AnimationLibrary_i7jn6")
+}
+autoplay = "idle"

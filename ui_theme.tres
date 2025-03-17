@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d1knr2bsaf0tp"]
+
+[ext_resource type="FontFile" uid="uid://cto02mafhxpwc" path="res://fonts/Good Old DOS.ttf" id="1_yufxj"]
+
+[resource]
+default_font = ExtResource("1_yufxj")

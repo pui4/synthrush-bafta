@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://16dv5jbi4wp7"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_i4ntg"]
+[ext_resource type="PackedScene" uid="uid://bf71bt46utyn2" path="res://blend/hand.blend" id="2_s8w6v"]
+[ext_resource type="Script" path="res://scripts/hand.gd" id="3_afrye"]
+[ext_resource type="PackedScene" uid="uid://e2y747o52fps" path="res://player_weapons/test_gun.tscn" id="4_4orvm"]
+[ext_resource type="PackedScene" uid="uid://dj8278wpxcvwo" path="res://player_cyber/cyber_graple.tscn" id="5_2nyk7"]
+[ext_resource type="Script" path="res://scripts/cyber_holder.gd" id="5_dbw4d"]
+[ext_resource type="Script" path="res://scripts/cyber_hip_holder.gd" id="7_j1m8d"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bmdos"]
+height = 3.0
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_i4ntg")
+forward_speed = 1.0
+side_speed = 1.0
+max_speed = 50.0
+max_accel = 5.0
+friction = 1.1
+max_lean_deg = 7.0
+lean_div = 2.5
+air_friction = 1.05
+wallbouce_vector = Vector3(0, 15, -50)
+direction_wallbounce_mulitplier = 30.0
+air_strafe_multiplier = 0.4
+graple_reel_speed = 60.0
+gravity = 1.5
+jump_height = 25.0
+max_fall_speed = 1000.0
+hand_vel_div = 1000.0
+max_hand_dist = 0.4
+hand_lerp_speed = 5.0
+lookspeed = 0.1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("CapsuleShape3D_bmdos")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+cull_mask = 1048573
+current = true
+fov = 90.0
+
+[node name="hand" parent="Head" instance=ExtResource("2_s8w6v")]
+transform = Transform3D(-1.7623e-11, -0.109999, -0.000403167, -4.80822e-09, 0.000403167, -0.109999, 0.11, 0, -4.80825e-09, 0.523752, -0.368194, -0.767824)
+script = ExtResource("3_afrye")
+weapon_definitions = Array[PackedScene]([ExtResource("4_4orvm")])
+
+[node name="Arm Holder" type="Node3D" parent="Head"]
+transform = Transform3D(-1.22392e-08, 0, 0.28, 0, 0.28, 0, -0.28, 0, -1.22392e-08, -0.711463, -0.478973, -0.385085)
+script = ExtResource("5_dbw4d")
+cyber_definitions = Array[PackedScene]([null])
+
+[node name="Hip Holder" type="Node3D" parent="Head"]
+transform = Transform3D(-1.22392e-08, 0, 0.28, 0, 0.28, 0, -0.28, 0, -1.22392e-08, 0, -1.47318, 0)
+script = ExtResource("7_j1m8d")
+cyber_definitions = Array[PackedScene]([null, ExtResource("5_2nyk7")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Head"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Head/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Head/CanvasLayer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Camera3D2" type="Camera3D" parent="Head/CanvasLayer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55, 0)
+cull_mask = 1047554
+
+[node name="RayCast3D" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -1000)
+
+[node name="FmodListener3D" type="FmodListener3D" parent="Head"]
+
+[node name="Land" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Land"
+event_guid = "{db037323-43f1-4a8f-bf8e-a6f3a2030a1b}"
+
+[node name="Jump" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Jump"
+event_guid = "{6bbc2392-67ff-4c75-a8d2-d595a8ede68c}"
+
+[node name="Double Jump" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Double Jump"
+event_guid = "{833b5d03-2f0a-4c4f-9215-63836a5204dc}"
+
+[node name="Footsteps" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Footsteps"
+event_guid = "{aff426dc-ead7-4e33-88a8-11ea191e5a90}"
+
+[node name="Hurt" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Hurt"
+event_guid = "{ecc67e1c-7636-487e-83d3-d567f63effc1}"
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res://fmodstudio/main/Build/Desktop/Master.bank", "res://fmodstudio/main/Build/Desktop/Master.strings.bank"]
+
+[node name="Wallbounce" type="Node3D" parent="."]
+
+[node name="left" type="RayCast3D" parent="Wallbounce"]
+target_position = Vector3(-1, 0, 0)
+
+[node name="right" type="RayCast3D" parent="Wallbounce"]
+target_position = Vector3(1, 0, 0)

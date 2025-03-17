@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj8278wpxcvwo"]
+
+[ext_resource type="Script" path="res://scripts/cyber_graple.gd" id="1_waqtm"]
+[ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="2_4kmr0"]
+[ext_resource type="ArrayMesh" uid="uid://cyaalkrqboodq" path="res://meshes/grapple_hook.res" id="3_ipgxw"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_r1cy8"]
+
+[node name="cyber_graple" type="Node3D"]
+script = ExtResource("1_waqtm")
+max_graple_distance = 100.0
+graple_velocity = 75.0
+
+[node name="Cooldown" type="Timer" parent="."]
+
+[node name="LineRenderer3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("ImmediateMesh_r1cy8")
+script = ExtResource("2_4kmr0")
+
+[node name="Cube_001" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, -6.55651e-07, -1.28592e-07, -6.55651e-07, 1, -1.08787e-08, 1.28592e-07, -1.08787e-08, -1, 0, 0, 0)
+layers = 2
+mesh = ExtResource("3_ipgxw")
+skeleton = NodePath("")
+
+[node name="End point" type="Node3D" parent="Cube_001"]
+transform = Transform3D(-0.988919, -0.030852, -0.145218, -0.145014, -0.00877324, 0.989392, -0.0317987, 0.999486, 0.00420195, -0.85041, 0.0271554, -0.13394)
+
+[node name="Hit" type="FmodEventEmitter3D" parent="Cube_001/End point"]
+event_name = "event:/Grapple Hit"
+event_guid = "{46611190-3a95-498a-8f00-8e1e9b693ecb}"
+
+[node name="Shoot" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Grapple Shoot"
+event_guid = "{a256ee5e-348d-4fe5-81a4-67f0afe4b475}"
+
+[node name="Retract" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Grapple Retract"
+event_guid = "{d9768fc4-5f04-489a-a984-a94cf59a959e}"
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

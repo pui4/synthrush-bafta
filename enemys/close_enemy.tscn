@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8kclykru8764"]
+
+[ext_resource type="Script" path="res://scripts/close_enemy.gd" id="1_fk1kf"]
+[ext_resource type="PackedScene" uid="uid://b38k87vrruu32" path="res://models/dracula cutout.glb" id="1_unmf3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2fhg"]
+size = Vector3(2.03558, 4.05518, 1.26099)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ghket"]
+size = Vector3(3.32397, 4.27881, 3.72015)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mc8t0"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yhh0o"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k3gyi"]
+emission_shape_offset = Vector3(0, 1.14, 0)
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 10.0
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ammh8"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+billboard_mode = 1
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_xeijk"]
+material = SubResource("StandardMaterial3D_ammh8")
+size = 0.3
+
+[node name="close_enemy" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_fk1kf")
+speed = 10.0
+pounce_distance = 10.0
+pounce_vel = 20.0
+gravity = 1.5
+max_fall_speed = 1000.0
+damage = 10
+knockback = Vector3(0, 20, 100)
+
+[node name="Pounce Cooldown" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Pounce Time" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="dracula cutout" parent="." instance=ExtResource("1_unmf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43898, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0335388, 1.52759, -0.608521)
+shape = SubResource("BoxShape3D_b2fhg")
+
+[node name="Hit Box" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hit Box"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0455322, 1.6394, -0.337738)
+shape = SubResource("BoxShape3D_ghket")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+use_3d_avoidance = true
+
+[node name="Pounce" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Close Enemy Pounce"
+event_guid = "{f2a3ba87-bba9-497d-a9c8-6e9d8535b7ac}"
+
+[node name="Footsteps" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Close Enemy Footsteps"
+event_guid = "{20c90318-5a54-405e-bb5d-07b98648d261}"
+
+[node name="Hurt" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Close Enemy Hurt"
+event_guid = "{5cfd7308-9d18-4764-899a-5b6731a311ce}"
+
+[node name="Death" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Close Enemy Death"
+event_guid = "{16959e75-4566-4204-9d14-813be72250a0}"
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+emitting = false
+lifetime = 600.0
+process_material = SubResource("ParticleProcessMaterial_mc8t0")
+draw_pass_1 = SubResource("PlaneMesh_yhh0o")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 100
+sub_emitter = NodePath("../GPUParticles3D2")
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+trail_enabled = true
+process_material = SubResource("ParticleProcessMaterial_k3gyi")
+draw_pass_1 = SubResource("RibbonTrailMesh_xeijk")
+
+[connection signal="timeout" from="Pounce Cooldown" to="." method="_on_pounce_cooldown_timeout"]
+[connection signal="timeout" from="Pounce Time" to="." method="_on_pounce_time_timeout"]
+[connection signal="body_entered" from="Hit Box" to="." method="_on_hit_box_body_entered"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="stopped" from="Death" to="." method="_on_death_stopped"]

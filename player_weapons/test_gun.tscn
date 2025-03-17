@@ -1,0 +1,129 @@
+[gd_scene load_steps=13 format=3 uid="uid://e2y747o52fps"]
+
+[ext_resource type="Script" path="res://scripts/test_gun.gd" id="1_lhpaj"]
+[ext_resource type="ArrayMesh" uid="uid://bwbs1q743vejt" path="res://meshes/gun_base.res" id="1_sfhfe"]
+[ext_resource type="ArrayMesh" uid="uid://ddp7mnrlb57f6" path="res://meshes/gun_top.res" id="2_4d4ls"]
+[ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="4_88nta"]
+[ext_resource type="Texture2D" uid="uid://bfg6cw78csncq" path="res://png/Untitled.png" id="5_rlt2v"]
+
+[sub_resource type="Animation" id="Animation_0isnm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun Body/Gun Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun Body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aq3l3"]
+resource_name = "shoot"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gun Body/Gun Top:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0325371, -7.45058e-09, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gun Body:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5708, -3.14159, 0), Vector3(1.5708, 0, 0), Vector3(1.5708, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lq11k"]
+_data = {
+"RESET": SubResource("Animation_0isnm"),
+"shoot": SubResource("Animation_aq3l3")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0fox"]
+shading_mode = 0
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_sl0v2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lysha"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("5_rlt2v")
+texture_filter = 0
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_mubtu"]
+material = SubResource("StandardMaterial3D_lysha")
+
+[node name="test_gun" type="Node3D"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -0.411045, 0.845589, 0.526549)
+script = ExtResource("1_lhpaj")
+
+[node name="Gun Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(-22.15, -5.61543e-05, 2.03278e-10, 0, -8.01828e-05, -22.15, 5.61543e-05, -22.15, 8.01828e-05, -1.78672, -0.479334, -0.857886)
+layers = 2
+mesh = ExtResource("1_sfhfe")
+
+[node name="Gun Top" type="MeshInstance3D" parent="Gun Body"]
+transform = Transform3D(1, -7.10543e-14, 4.23516e-22, 7.10543e-14, 1, 7.10543e-15, -5.0822e-21, -7.10543e-15, 1, 0, 0, 0)
+layers = 2
+mesh = ExtResource("2_4d4ls")
+
+[node name="Shoot" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Shoot"
+event_guid = "{c6d8bf30-da51-4f0e-b6c8-fb3ebf6aedcd}"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lq11k")
+}
+
+[node name="LineRenderer3D" type="MeshInstance3D" parent="."]
+layers = 2
+material_override = SubResource("StandardMaterial3D_b0fox")
+mesh = SubResource("ImmediateMesh_sl0v2")
+script = ExtResource("4_88nta")
+start_thickness = 0.0
+end_thickness = 0.0
+draw_caps = false
+
+[node name="Gun End" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.68588, -0.485404, -1.72103)
+
+[node name="Flash" type="MeshInstance3D" parent="Gun End"]
+visible = false
+layers = 2
+mesh = SubResource("QuadMesh_mubtu")
+
+[node name="Stop Flash" type="Timer" parent="Gun End"]
+wait_time = 0.05
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Gun End/Stop Flash" to="." method="_on_stop_flash_timeout"]

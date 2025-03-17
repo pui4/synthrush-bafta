@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{85738f7e-320a-4cce-aa3e-5e338b0ef681}">
+		<property name="assetPath">
+			<value>Light Mech Soldier Footsteps 001.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6daec75a-0823-4129-bdae-e8eff1995ac6}</destination>
+		</relationship>
+	</object>
+</objects>

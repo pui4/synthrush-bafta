@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cruu7og7k56b"]
+
+[ext_resource type="Script" path="res://scripts/test_enemy.gd" id="1_qta7t"]
+[ext_resource type="PackedScene" uid="uid://b38k87vrruu32" path="res://models/dracula cutout.glb" id="2_by758"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yhigk"]
+size = Vector3(1.16199, 2.27917, 0.639435)
+
+[node name="test_enemy" type="StaticBody3D" groups=["enemy"]]
+script = ExtResource("1_qta7t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0288696, 0.820496, -0.289108)
+shape = SubResource("BoxShape3D_yhigk")
+
+[node name="dracula cutout" parent="." instance=ExtResource("2_by758")]
+transform = Transform3D(0.555, 0, 0, 0, 0.555, 0, 0, 0, 0.555, 0, 0.783019, 0)

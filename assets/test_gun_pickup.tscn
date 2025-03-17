@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg56mk7eyn4ie"]
+
+[ext_resource type="ArrayMesh" uid="uid://bwbs1q743vejt" path="res://meshes/gun_base.res" id="1_ahas2"]
+[ext_resource type="Script" path="res://scripts/test_gun_pickup.gd" id="1_u0puo"]
+[ext_resource type="ArrayMesh" uid="uid://ddp7mnrlb57f6" path="res://meshes/gun_top.res" id="2_05on0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cwsf8"]
+size = Vector3(4.53125, 2.71985, 4.52539)
+
+[node name="test_gun_pickup" type="Node3D"]
+transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
+script = ExtResource("1_u0puo")
+
+[node name="Gun Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(-22.15, -3.34456e-06, 1.4584e-13, 3.96943e-16, -9.76026e-07, -22.15, 3.34456e-06, -22.15, 9.76026e-07, -1.88155, -0.479334, -0.818552)
+mesh = ExtResource("1_ahas2")
+
+[node name="Gun Top" type="MeshInstance3D" parent="Gun Body"]
+transform = Transform3D(1, 0, 4.23516e-22, 0, 1, 3.55271e-15, 4.23516e-22, -3.55271e-15, 1, 0, 0, 0)
+mesh = ExtResource("2_05on0")
+
+[node name="Pick Up" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Pick Up"
+event_guid = "{082f4a01-7ba7-431f-9871-b55c903bfa6d}"
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.133474, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76563, 0.859924, -1.7627)
+shape = SubResource("BoxShape3D_cwsf8")
+
+[connection signal="stopped" from="Pick Up" to="." method="_on_pick_up_stopped"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

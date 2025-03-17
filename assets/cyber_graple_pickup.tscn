@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://51huoau4nevu"]
+
+[ext_resource type="Script" path="res://scripts/cyber_graple_pickup.gd" id="1_x1g56"]
+[ext_resource type="PackedScene" uid="uid://rhiq4ran4o2c" path="res://blend/daniel grapple and animations.blend" id="2_crjpm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_245xr"]
+size = Vector3(2.183, 0.165, 0.418)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tputd"]
+size = Vector3(2.50342, 1, 1)
+
+[node name="cyber_graple_pickup" type="Node3D"]
+script = ExtResource("1_x1g56")
+cyber_id = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_245xr")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0256348, 0, 0)
+shape = SubResource("BoxShape3D_tputd")
+
+[node name="Pick Up" type="FmodEventEmitter3D" parent="."]
+event_name = "event:/Pick Up"
+event_guid = "{082f4a01-7ba7-431f-9871-b55c903bfa6d}"
+
+[node name="daniel grapple and animations" parent="." instance=ExtResource("2_crjpm")]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="stopped" from="Pick Up" to="." method="_on_pick_up_stopped"]

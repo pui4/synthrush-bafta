@@ -1,0 +1,10 @@
+do Lib.do_soft_pause()
+if {rnd_msg} == 1:
+	dealer: I'll see what I've got in stock.
+elif {rnd_msg} == 2:
+	dealer: Let's see what we have.
+elif {rnd_msg} == 3:
+	dealer: I'll see what I've got.
+elif {rnd_msg} == 4:
+	dealer: I've got some specials in today.
+[signal arg="dealer_done"]

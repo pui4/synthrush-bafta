@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvsboxu0x11nu"]
+
+[ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_vapuh"]
+[ext_resource type="Shader" path="res://shaders/pseudo_3d.gdshader" id="2_7m6it"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_df87r"]
+shader = ExtResource("2_7m6it")
+shader_parameter/isInRadians = false
+shader_parameter/xRadians = null
+shader_parameter/yRadians = null
+shader_parameter/zRadians = null
+shader_parameter/xDegrees = 0.0
+shader_parameter/yDegrees = 42.078
+shader_parameter/zDegrees = 4.675
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n4bqp"]
+shader = ExtResource("2_7m6it")
+shader_parameter/isInRadians = false
+shader_parameter/xRadians = null
+shader_parameter/yRadians = null
+shader_parameter/zRadians = null
+shader_parameter/xDegrees = 0.0
+shader_parameter/yDegrees = 42.078
+shader_parameter/zDegrees = 4.675
+
+[node name="game_ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vapuh")
+
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_df87r")
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = -267.0
+offset_right = 461.0
+offset_bottom = -42.0
+grow_vertical = 0
+
+[node name="Health" type="RichTextLabel" parent="Panel"]
+material = SubResource("ShaderMaterial_n4bqp")
+layout_mode = 1
+offset_right = 313.0
+offset_bottom = 45.0
+text = "100"

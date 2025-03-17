@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://d7bmywundwsm"
+path="res://.godot/imported/lv_intro_01.map-bb104a2756086c62ceeb96d5b54ba013.tres"
+
+[deps]
+
+source_file="res://trenchbroom/maps/lv_intro_01.map"
+dest_files=["res://.godot/imported/lv_intro_01.map-bb104a2756086c62ceeb96d5b54ba013.tres"]
+
+[params]
+
