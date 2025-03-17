@@ -21,13 +21,22 @@ extends Control
 
 var orig_panel_y : int
 var current_panel = null
+var cat_name : String
 
 func _ready() -> void:
 	var index = 0
 	for i in Lib.unlocked_slots:
 		if i:
+			match index:
+				2:
+					cat_name = "hip"
+				_:
+					cat_name = "hand"
+
 			btns[index].get_node("TextureRect").hide()
 			btns[index].disabled = false
+			if Lib.current_player_cyber[cat_name] != 0:
+				btns[index].icon = item_icons[cat_name][Lib.current_player_cyber[cat_name] - 1]
 		index += 1
 
 func _on_save_pressed() -> void:
@@ -61,7 +70,6 @@ func btn_pressed(id : int) -> void:
 
 func menu_btn_pressed(id: int) -> void:
 	click_sfx.play()
-	var cat_name = ""
 	match current_panel:
 		2:
 			cat_name = "hip"
