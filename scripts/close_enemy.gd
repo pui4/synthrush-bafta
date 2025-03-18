@@ -3,7 +3,6 @@ extends CharacterBody3D
 @export var health : int = 100
 
 @onready var nav : NavigationAgent3D = $"NavigationAgent3D"
-@onready var pounce_timer : Timer = $"Pounce Time"
 @onready var pounce_cooldown : Timer = $"Pounce Cooldown"
 
 @onready var pounce_sfx : FmodEventEmitter3D = $"Pounce"
@@ -13,7 +12,8 @@ extends CharacterBody3D
 @onready var collider : CollisionShape3D = $"CollisionShape3D"
 @onready var hitbox_collider : CollisionShape3D = $"Hit Box/CollisionShape3D"
 @onready var blood_splater : GPUParticles3D = $"GPUParticles3D"
-@onready var body : Node3D = $"dracula cutout"
+@onready var body : Node3D = $"daniel filth grub"
+@onready var anim : AnimationPlayer = $"daniel filth grub/AnimationPlayer"
 
 @export var speed : float
 @export var pounce_distance : float
@@ -76,6 +76,7 @@ func navigate() -> void:
 	rotation.x = 0
 
 func pounce() -> void:
+	anim.play("leap")
 	footsteps_sfx.paused = true
 
 	if player_dir == Vector3.ZERO:
@@ -83,7 +84,6 @@ func pounce() -> void:
 		player_dir = global_position.direction_to(Lib.player_location)
 
 	velocity = player_dir * pounce_vel
-	pounce_timer.start()
 
 func _physics_process(_delta: float) -> void:
 	if not can_pounce and not dead:
@@ -104,11 +104,6 @@ func _physics_process(_delta: float) -> void:
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = safe_velocity
 
-func _on_pounce_time_timeout() -> void:
-	player_dir = Vector3.ZERO
-	pounce_cooldown.start()
-	can_pounce = false
-
 func _on_pounce_cooldown_timeout() -> void:
 	done_pouncing = true
 
@@ -119,3 +114,10 @@ func _on_hit_box_body_entered(body : Node3D) -> void:
 	if body.is_in_group("player"):
 		Lib.knockback_player.emit(knockback)
 		Lib.player_health -= damage
+
+func _on_animation_player_animation_finished(anim_name:StringName) -> void:
+	if anim_name == "leap":
+		player_dir = Vector3.ZERO
+		pounce_cooldown.start()
+		can_pounce = false
+		anim.play("run")
