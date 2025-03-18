@@ -55,6 +55,15 @@ func _process(delta: float) -> void:
 		}
 		player_health = 100
 		get_tree().reload_current_scene()
+	
+	if currently_in_wave:
+		all_enems_dead = true
+		for i in wave_enems:
+			if i != null:
+				all_enems_dead = false
+		if all_enems_dead == true:
+			wave_done.emit(wave_id)
+			currently_in_wave = false
 
 func use_targets(target: String) -> void:
 	# Targetnames are really Godot Groups, so we can have multiple entities 
@@ -87,3 +96,19 @@ func unpause() -> void:
 	soft_pause = false
 	stop_pause.emit()
 	get_tree().paused = false
+
+# Enemy waves
+signal wave_done(id : int)
+
+var wave_id : int
+var wave_enems : Array[Node3D]
+var all_enems_dead : bool
+var currently_in_wave : bool = false
+func start_wave(id : int, target : String):
+	currently_in_wave = true
+	wave_id = id
+	var target_list: Array[Node] = get_tree().get_nodes_in_group(target)
+	for targ in target_list:
+		if targ.has_method('targetfunc'):
+			wave_enems.append(targ.call('targetfunc'))
+	print(wave_enems)

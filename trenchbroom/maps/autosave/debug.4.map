@@ -412,42 +412,4 @@
 "classname" "enemy_spawner"
 "origin" "-568 -4424 56"
 "id" "1"
-"targetname" "em_wave_spawn"
-}
-// entity 19
-{
-"classname" "wave_start"
-"origin" "-568 -4328 56"
-"target" "em_wave_spawn"
-"targetname" "em_wave_start"
-"wave_id" "0"
-}
-// entity 20
-{
-"classname" "trigger"
-"fireonce" "1"
-"target" "em_wave_start"
-// brush 0
-{
-( -752 -4448 32 ) ( -752 -4447 32 ) ( -752 -4448 33 ) __TB_empty [ 0 -1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -752 -4480 32 ) ( -752 -4480 33 ) ( -751 -4480 32 ) __TB_empty [ 1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -752 -4448 32 ) ( -751 -4448 32 ) ( -752 -4447 32 ) __TB_empty [ -1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -736 -3824 512 ) ( -736 -3823 512 ) ( -735 -3824 512 ) __TB_empty [ 1 0 0 0 ] [ 0 -1 0 0 ] 0 1 1
-( -736 -3824 48 ) ( -735 -3824 48 ) ( -736 -3824 49 ) __TB_empty [ -1 0 0 0 ] [ 0 0 -1 0 ] 0 1 1
-( -736 -3824 48 ) ( -736 -3824 49 ) ( -736 -3823 48 ) __TB_empty [ 0 1 0 0 ] [ 0 0 -1 0 ] 0 1 1
-}
-}
-// entity 21
-{
-"classname" "wave_end"
-"origin" "-568 -4312 56"
-"wave_id" "0"
-"target" "test_em_end_wave"
-}
-// entity 22
-{
-"classname" "enemy_spawner"
-"origin" "-360 -4104 56"
-"id" "1"
-"targetname" "test_em_end_wave"
 }

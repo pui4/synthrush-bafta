@@ -442,12 +442,11 @@
 "classname" "wave_end"
 "origin" "-568 -4312 56"
 "wave_id" "0"
-"target" "test_em_end_wave"
+"target" ""
 }
 // entity 22
 {
 "classname" "enemy_spawner"
 "origin" "-360 -4104 56"
 "id" "1"
-"targetname" "test_em_end_wave"
 }

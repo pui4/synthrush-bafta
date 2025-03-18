@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dagxqsqrlvy32"]
+
+[ext_resource type="Script" path="res://scripts/wave_end.gd" id="1_7p4x0"]
+
+[node name="wave_end" type="Node3D"]
+script = ExtResource("1_7p4x0")
