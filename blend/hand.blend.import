@@ -33,8 +33,14 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
+"PATH:Camera": {
+"import/skip_import": true
+},
 "PATH:Cube": {
 "mesh_instance/layers": 2
+},
+"PATH:Sun": {
+"import/skip_import": true
 }
 }
 }

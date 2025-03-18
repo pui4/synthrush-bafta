@@ -10,6 +10,7 @@ size = Vector3(4.53125, 2.71985, 4.52539)
 [node name="test_gun_pickup" type="Node3D"]
 transform = Transform3D(0.325, 0, 0, 0, 0.325, 0, 0, 0, 0.325, 0, 0, 0)
 script = ExtResource("1_u0puo")
+weapon_id = 1
 
 [node name="Gun Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(-22.15, -3.34456e-06, 1.4584e-13, 3.96943e-16, -9.76026e-07, -22.15, 3.34456e-06, -22.15, 9.76026e-07, -1.88155, -0.479334, -0.818552)

@@ -1,8 +1,9 @@
 extends Node
 
 # Item ids:
-# 0: test gun
+# 1: test gun
 @export var current_player_items : Array[int]
+@export var current_equip_item : int = 0
 
 # Cyber ids:
 # 1: graple
@@ -47,6 +48,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("restart") or player_health <= 0:
 		current_player_items = []
+		current_equip_item = 0
 		current_player_cyber = {
 			"hand": 0,
 			"hip": 0
