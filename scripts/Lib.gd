@@ -42,7 +42,12 @@ signal stop_pause()
 
 var ui = preload("res://ui/game_ui.tscn")
 var ui_inst : Control
+var banks := Array()
+
 func _ready() -> void:
+	banks.append(FmodServer.load_bank("res://fmodstudio/main/Build/Desktop/Master.bank", FmodServer.FMOD_STUDIO_LOAD_BANK_NORMAL))
+	banks.append(FmodServer.load_bank("res://fmodstudio/main/Build/Desktop/Master.strings.bank", FmodServer.FMOD_STUDIO_LOAD_BANK_NORMAL))
+
 	ui_inst = ui.instantiate()
 	add_child(ui_inst)
 	music_player = FmodEventEmitter3D.new()

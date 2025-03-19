@@ -106,9 +106,6 @@ event_guid = "{aff426dc-ead7-4e33-88a8-11ea191e5a90}"
 event_name = "event:/Hurt"
 event_guid = "{ecc67e1c-7636-487e-83d3-d567f63effc1}"
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res://fmodstudio/main/Build/Desktop/Master.bank", "res://fmodstudio/main/Build/Desktop/Master.strings.bank"]
-
 [node name="Wallbounce" type="Node3D" parent="."]
 
 [node name="left" type="RayCast3D" parent="Wallbounce"]

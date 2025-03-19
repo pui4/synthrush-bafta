@@ -1,4 +1,58 @@
-[gd_scene format=3 uid="uid://cl87imgo8x8lc"]
+[gd_scene load_steps=11 format=3 uid="uid://cl87imgo8x8lc"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_1kg37"]
+[ext_resource type="Shader" path="res://shaders/drop_shadow.gdshader" id="1_gddcc"]
+[ext_resource type="Texture2D" uid="uid://d0kt0keii38vu" path="res://png/skeleton.png" id="2_vuk1p"]
+[ext_resource type="Theme" uid="uid://d1knr2bsaf0tp" path="res://ui_theme.tres" id="3_xkcx3"]
+[ext_resource type="Texture2D" uid="uid://de7cqtywxjlce" path="res://png/fmod.png" id="5_jri1f"]
+[ext_resource type="Texture2D" uid="uid://bvgi0kdl44jdv" path="res://png/loading.png" id="6_ltloy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_52fpf"]
+shader = ExtResource("1_gddcc")
+shader_parameter/debug = false
+shader_parameter/border_scale = 1.145
+shader_parameter/shadow_offset = Vector2(-1.75, -2.965)
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/blur_amount = 0.0
+shader_parameter/shadow_scale = 1.0
+shader_parameter/disable_rotating = false
+
+[sub_resource type="Animation" id="Animation_ead4t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_56khw"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vvf6f"]
+_data = {
+"RESET": SubResource("Animation_ead4t"),
+"fade": SubResource("Animation_56khw")
+}
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -7,3 +61,96 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1kg37")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.0431373, 0.0901961, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_52fpf")
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 189.0
+offset_top = -4.0
+offset_right = 503.0
+offset_bottom = -86.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vuk1p")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 22.0
+offset_top = 24.0
+offset_right = 564.0
+offset_bottom = 106.0
+theme = ExtResource("3_xkcx3")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 7
+theme_override_constants/shadow_offset_x = 7
+theme_override_font_sizes/normal_font_size = 81
+text = "SYNTHRUSH"
+
+[node name="Play" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 29.0
+offset_top = 118.0
+offset_right = 285.0
+offset_bottom = 201.0
+theme = ExtResource("3_xkcx3")
+theme_override_font_sizes/font_size = 51
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 29.0
+offset_top = 221.0
+offset_right = 285.0
+offset_bottom = 304.0
+theme = ExtResource("3_xkcx3")
+theme_override_font_sizes/font_size = 51
+text = "QUIT"
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ltloy")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_jri1f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vvf6f")
+}
+autoplay = "fade"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
