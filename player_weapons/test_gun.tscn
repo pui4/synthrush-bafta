@@ -70,7 +70,7 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0fox"]
 shading_mode = 0
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_aln4a"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_7qbxj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lysha"]
 transparency = 1
@@ -108,7 +108,7 @@ libraries = {
 [node name="LineRenderer3D" type="MeshInstance3D" parent="."]
 layers = 2
 material_override = SubResource("StandardMaterial3D_b0fox")
-mesh = SubResource("ImmediateMesh_aln4a")
+mesh = SubResource("ImmediateMesh_7qbxj")
 script = ExtResource("4_88nta")
 start_thickness = 0.0
 end_thickness = 0.0
