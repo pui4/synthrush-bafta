@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{dddff7ec-2764-4821-afb2-d8b24592d586}">
+		<property name="assetPath">
+			<value>HeavyElectronic Vol3 Boiling Point Intensity 2.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>94.588250000000002</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6daec75a-0823-4129-bdae-e8eff1995ac6}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -567,6 +567,7 @@ id = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.25, 8.5625, 51.75)
 script = ExtResource("20_tp7c6")
 targetname = "box_door"
+autoclose = null
 
 [node name="entity_23_mesh_instance" type="MeshInstance3D" parent="NavigationRegion3D/FuncGodotMap/entity_23_door"]
 mesh = SubResource("ArrayMesh_t6ssx")

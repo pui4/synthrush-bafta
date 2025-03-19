@@ -28,7 +28,6 @@ description = "door"
 func_godot_internal = false
 base_classes = Array[Resource]([])
 class_properties = {
-"autoclose": false,
 "targetname": ""
 }
 class_property_descriptions = {}
