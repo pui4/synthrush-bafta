@@ -5,6 +5,7 @@ var buffer : float = 1
 var speed : float = 0.1
 
 @export var targetname : String
+@export var autoclose : bool
 
 var height : float
 var is_moving_up : bool = false
@@ -17,6 +18,7 @@ var door_sfx_has_played : bool = false
 
 func _func_godot_apply_properties(props: Dictionary) -> void:
     targetname = props["targetname"] as String
+    autoclose = props["autoclose"] as bool
 
 func _ready() -> void:
     if Engine.is_editor_hint():
@@ -58,8 +60,9 @@ func _process(_delta: float) -> void:
                 stop_sfx.play()
                 stop_sfx_has_played = true
             position.y = height + orig_y - buffer
-            await get_tree().create_timer(1).timeout
-            is_moving_up = false
+            if autoclose:
+                await get_tree().create_timer(1).timeout
+                is_moving_up = false
     else:
         if position.y > orig_y:
             if not door_sfx_has_played:
