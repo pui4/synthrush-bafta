@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://addons/LineRenderer/line_renderer.gd" id="2_4kmr0"]
 [ext_resource type="ArrayMesh" uid="uid://cyaalkrqboodq" path="res://meshes/grapple_hook.res" id="3_ipgxw"]
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_wjtyo"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_x8h1i"]
 
 [node name="cyber_graple" type="Node3D"]
 script = ExtResource("1_waqtm")
@@ -14,7 +14,7 @@ graple_velocity = 75.0
 [node name="Cooldown" type="Timer" parent="."]
 
 [node name="LineRenderer3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("ImmediateMesh_wjtyo")
+mesh = SubResource("ImmediateMesh_x8h1i")
 script = ExtResource("2_4kmr0")
 
 [node name="Cube_001" type="MeshInstance3D" parent="."]

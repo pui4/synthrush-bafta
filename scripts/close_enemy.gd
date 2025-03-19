@@ -30,6 +30,9 @@ var old_heath : int
 var dead = false
 
 func _ready() -> void:
+	look_at(Lib.player_location)
+	rotation_degrees.y += 180
+	rotation.x = 0
 	nav.set_target_position(Lib.player_location)
 	footsteps_sfx.play()
 	old_heath = health
@@ -64,16 +67,15 @@ func navigate() -> void:
 		return
 
 	var next_path_position: Vector3 = nav.get_next_path_position()
+	look_at(next_path_position)
+	rotation_degrees.y += 180
+	rotation.x = 0
 	var new_velocity: Vector3 = global_position.direction_to(next_path_position) * speed
 
 	if nav.avoidance_enabled:
 		nav.set_velocity(new_velocity)
 	else:
 		_on_navigation_agent_3d_velocity_computed(new_velocity)
-
-	look_at(Lib.player_location)
-	rotation_degrees.y += 180
-	rotation.x = 0
 
 func pounce() -> void:
 	anim.play("leap")
