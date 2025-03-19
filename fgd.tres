@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=16 format=3 uid="uid://chuubboxaqxlx"]
+[gd_resource type="Resource" script_class="FuncGodotFGDFile" load_steps=17 format=3 uid="uid://chuubboxaqxlx"]
 
 [ext_resource type="Resource" uid="uid://crgpdahjaj" path="res://addons/func_godot/fgd/func_godot_fgd.tres" id="1_fa2eh"]
 [ext_resource type="Script" path="res://addons/func_godot/src/fgd/func_godot_fgd_file.gd" id="1_v6dqf"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://cn6twvnogpcbl" path="res://entities/point/wave_start.tres" id="12_hb0d0"]
 [ext_resource type="Resource" uid="uid://dvle7ddgf234w" path="res://entities/point/wave_end.tres" id="13_4b1mj"]
 [ext_resource type="Resource" uid="uid://fxux1trtgwat" path="res://entities/door.tres" id="14_a8lma"]
+[ext_resource type="Resource" uid="uid://c0cy1rp005ioh" path="res://entities/point/music_intesity.tres" id="15_f0vbq"]
 
 [resource]
 script = ExtResource("1_v6dqf")
@@ -22,4 +23,4 @@ export_file = false
 target_map_editor = 1
 fgd_name = "mv-game"
 base_fgd_files = Array[Resource]([ExtResource("1_fa2eh")])
-entity_definitions = Array[Resource]([ExtResource("2_rb1bk"), ExtResource("4_45828"), ExtResource("4_mpi8q"), ExtResource("5_cuulx"), ExtResource("6_snc82"), ExtResource("7_7mghi"), ExtResource("8_5o5a3"), ExtResource("9_vdpea"), ExtResource("10_ejoi0"), ExtResource("11_7oybk"), ExtResource("12_hb0d0"), ExtResource("13_4b1mj"), ExtResource("14_a8lma")])
+entity_definitions = Array[Resource]([ExtResource("2_rb1bk"), ExtResource("4_45828"), ExtResource("4_mpi8q"), ExtResource("5_cuulx"), ExtResource("6_snc82"), ExtResource("7_7mghi"), ExtResource("8_5o5a3"), ExtResource("9_vdpea"), ExtResource("10_ejoi0"), ExtResource("11_7oybk"), ExtResource("12_hb0d0"), ExtResource("13_4b1mj"), ExtResource("14_a8lma"), ExtResource("15_f0vbq")])

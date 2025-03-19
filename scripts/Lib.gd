@@ -25,6 +25,7 @@ extends Node
 @export var player_health = 100
 @export var player_location : Vector3
 @export var soft_pause : bool = false
+@export var music_player : FmodEventEmitter3D
 
 signal knockback_player(vector : Vector3)
 signal start_player_graple(point : Vector3, object : Node3D)
@@ -44,6 +45,8 @@ var ui_inst : Control
 func _ready() -> void:
 	ui_inst = ui.instantiate()
 	add_child(ui_inst)
+	music_player = FmodEventEmitter3D.new()
+	add_child(music_player)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("restart") or player_health <= 0:

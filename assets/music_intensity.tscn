@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://vly24at8lug4"]
+
+[ext_resource type="Script" path="res://scripts/music_intensity.gd" id="1_5wvij"]
+
+[node name="music_intensity" type="Node3D"]
+script = ExtResource("1_5wvij")
