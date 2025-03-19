@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvsboxu0x11nu"]
+[gd_scene load_steps=13 format=3 uid="uid://dvsboxu0x11nu"]
 
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="1_vapuh"]
 [ext_resource type="Shader" path="res://shaders/pseudo_3d.gdshader" id="2_7m6it"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0kt0keii38vu" path="res://png/skeleton.png" id="4_y271r"]
 [ext_resource type="Texture2D" uid="uid://c4blpaqduo3qp" path="res://png/hand_icon.png" id="5_bxhpu"]
 [ext_resource type="Texture2D" uid="uid://dsyp8rmloi5l2" path="res://png/gun_icon.png" id="6_km08u"]
+[ext_resource type="Texture2D" uid="uid://la1368xichsg" path="res://png/crosshair.png" id="7_syq36"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_df87r"]
 shader = ExtResource("2_7m6it")
@@ -133,3 +134,20 @@ offset_top = -23.0
 offset_right = 241.0
 offset_bottom = 180.0
 texture = ExtResource("6_km08u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.99994
+offset_top = -12.0
+offset_right = 20.0001
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.725, 0.725)
+texture = ExtResource("7_syq36")
