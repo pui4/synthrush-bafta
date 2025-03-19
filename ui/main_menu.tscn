@@ -124,6 +124,22 @@ theme = ExtResource("3_xkcx3")
 theme_override_font_sizes/font_size = 51
 text = "QUIT"
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -43.0
+offset_right = 768.0
+offset_bottom = -3.0
+grow_vertical = 0
+theme = ExtResource("3_xkcx3")
+text = "* Ran out of time making levels. For controls and others, check README.txt :)"
+fit_content = true
+autowrap_mode = 0
+
 [node name="TextureRect3" type="TextureRect" parent="."]
 visible = false
 texture_filter = 1

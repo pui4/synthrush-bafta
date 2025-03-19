@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://4t8is75gcbif"]
+
+[ext_resource type="Script" path="res://scripts/unlock_catagory.gd" id="1_wne5l"]
+
+[node name="unlock_catagory" type="Node3D"]
+script = ExtResource("1_wne5l")

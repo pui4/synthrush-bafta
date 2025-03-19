@@ -45,6 +45,7 @@ var ui_inst : Control
 var banks := Array()
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	banks.append(FmodServer.load_bank("res://fmodstudio/main/Build/Desktop/Master.bank", FmodServer.FMOD_STUDIO_LOAD_BANK_NORMAL))
 	banks.append(FmodServer.load_bank("res://fmodstudio/main/Build/Desktop/Master.strings.bank", FmodServer.FMOD_STUDIO_LOAD_BANK_NORMAL))
 
