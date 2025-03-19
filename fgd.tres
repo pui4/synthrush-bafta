@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://cn6twvnogpcbl" path="res://entities/point/wave_start.tres" id="12_hb0d0"]
 [ext_resource type="Resource" uid="uid://dvle7ddgf234w" path="res://entities/point/wave_end.tres" id="13_4b1mj"]
 [ext_resource type="Resource" uid="uid://fxux1trtgwat" path="res://entities/door.tres" id="14_a8lma"]
-[ext_resource type="Resource" uid="uid://c0cy1rp005ioh" path="res://entities/point/music_intesity.tres" id="15_f0vbq"]
+[ext_resource type="Resource" path="res://entities/point/music_intesity.tres" id="15_f0vbq"]
 
 [resource]
 script = ExtResource("1_v6dqf")

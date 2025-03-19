@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://c7adxf2kah06i" path="res://assets/wave_start.tscn" id="18_1css4"]
 [ext_resource type="PackedScene" uid="uid://dagxqsqrlvy32" path="res://assets/wave_end.tscn" id="19_66qby"]
 [ext_resource type="Script" path="res://scripts/door.gd" id="20_tp7c6"]
-[ext_resource type="PackedScene" uid="uid://vly24at8lug4" path="res://assets/music_intensity.tscn" id="22_58j8s"]
+[ext_resource type="PackedScene" path="res://assets/music_intensity.tscn" id="22_58j8s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5uo3b"]
 
